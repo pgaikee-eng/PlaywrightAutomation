@@ -1,0 +1,48 @@
+playwright config.js-- 
+
+  reporter: [
+    ['html'],
+    ['allure-playwright',
+      {resultDir:'allure-result'},
+    ],
+],
+
+project dependency install for allure report
+
+Here's the complete, clean, battle-tested guide based on every issue we just solved:
+
+Allure Report Setup with Playwright — Complete Guide
+
+Step 1 — Install allure-playwright
+powershell-
+npm install -D allure-playwright
+
+check-
+dir node_modules\allure-playwright
+
+check allure-playwright version in powershell
+Get-Content node_modules\allure-playwright\package.json | Select-String "version"
+npx playwright --version   --check version compatibility with allure
+
+Step 2 — Install Allure CLI globally
+npm install -g allure-commandline
+
+3 Verify installation:
+allure --version
+
+Step 4 — Run Your Tests
+npx playwright test
+
+Step 5 — Generate & Open the Report
+Option A — (generates + opens browser automatically):
+allure serve allure-results
+
+Option B — Generate static HTML, open separately:
+allure generate allure-results --clean
+allure open allure-report
+
+Second run need to remove old results - 
+Remove-Item -Recurse -Force allure-results
+Remove-Item -Recurse -Force allure-report
+
+
